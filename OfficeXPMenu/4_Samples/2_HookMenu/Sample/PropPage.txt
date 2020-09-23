@@ -1,0 +1,30 @@
+Property Page Wizard Instructions:
+
+The Property Page Wizard has finished creating and modifying property pages.
+
+Below is a To Do list of items required to complete the testing, debugging, and bullet-proofing of your property page(s).
+
+A) Testing and Debugging Property Pages.
+
+1)  Property pages are always tested in design mode.  Add an instance of your control to a test form, as described in "Debugging Controls," in Books Online.
+2)  Select the instance of your control, and press Shift+F4 (or right-click the control, and select Properties from the context menu) to open the Property Pages dialog box.
+3)  The property pages for your control will appear in the Property Pages dialog box.  You can tab between pages, and set the various properties each page displays.  Make sure that properties are updated in the Properties window when you move off a property page.
+4)  You should also test your property pages with multiple controls selected; you can do this by placing multiple instances of your control on the test form.
+5)  The Property Pages dialog box is modeless, so the selection can be changed while your property page is running.  You can test this by selecting and unselecting additional instances of your control.  (Hold down the Ctrl key and click on a control to add or remove it from the selection list.)
+6)  If you've used the Procedure Attributes dialog box to associate a property page with a property in the Properties window, be sure to test the property page by clicking the ellipsis button the Properties window displays beside the property.
+
+B) Making Bullet-Proof, Full-Featured Property Pages 
+
+For properties that are Enums (including VB-provided Enums, like MousePointerConstants), change the text box the wizard provides to a drop down list; create a list of enum element names, and add code to the SelectionChanged event to load the list and select the current value (see Ch. 10 and the CtlPlus.vbg sample application).
+For numeric properties, optionally add code to the KeyPress event to prevent invalid values from being entered.
+If you've declared a color property as Long, you'll have to do a lot of work to validate a color entered in the text box.  A much better strategy is to change the property type to OLE_COLOR; that way, it will hook up automatically to the standard Color page.
+Determine which of your properties users would want to set to the same value for ALL of the controls in a multiple selection (as opposed to those that should only be set for the first selected control).  See the CtlPlus.vbg sample application.
+If there are fields where it's possible for the user to enter an invalid value, add error-trapping and validation code to the ApplyChanges event.  (In the case of invalid data, set Changed = True to prevent the property page from closing.  See "How Property Pages Work," in Books Online.)
+Add a module-level flag to prevent the initial property value load (in the SelectionChanged event) from marking all properties as 'dirty.'  (See CtlPlus.vbg sample application.) 
+
+Property pages are covered in depth in "Creating Property Pages for ActiveX Controls," in Books Online.  A simple example is shown in the step-by-step procedures in "Creating an ActiveX Control."  A slightly more complex example can be found in the CtlPlus.vbg sample application.
+
+You can save this report by clicking the "Save" button, or you can discard it by clicking "Close".
+
+
+
